@@ -1,0 +1,5 @@
+dockerhub-rate-limit:
+  script:
+    - apk add --no-cache jq
+    - TOKEN=$(curl --user "${DOCKERHUB_REGISTRY_USER}:${DOCKERHUB_REGISTRY_PSW}" "https://auth.docker.io/token?service=registry.docker.io&scope=repository:ratelimitpreview/test:pull" | jq -r .token)
+    - curl --head -H "Authorization:Bearer ${TOKEN}" https://registry-1.docker.io/v2/ratelimitpreview/test/manifests/latest 2>&1 | grep -i "RateLimit"
