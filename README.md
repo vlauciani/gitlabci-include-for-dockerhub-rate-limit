@@ -10,13 +10,13 @@ This snippet can be included in GitLab CI to che DockerHub rate limit.
 ```yml
 # .gitlab-ci.yml
 include:
-  - remote: 'https://raw.githubusercontent.com/italia/publiccode-parser-gitlab-ci/main/publiccode-validation.yml'
+  - remote: 'https://raw.githubusercontent.com/vlauciani/gitlabci-include-for-dockerhub-rate-limit/main/dockerhub-rate-limit.yml'
   
 stages:
   - . . .
-  - publiccode-parser-gitlab-ci_stage
+  - dockerhub-rate-limit_stage
   - . . .
   
-publiccode-parser:
-    stage: publiccode-parser-gitlab-ci_stage  
+dockerhub-rate-limit:
+    stage: dockerhub-rate-limit_stage  
 ```
