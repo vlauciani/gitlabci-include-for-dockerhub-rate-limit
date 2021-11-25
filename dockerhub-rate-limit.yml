@@ -15,10 +15,10 @@ dockerhub-rate-limit:
 
 .dind:
   image: 
-    name: docker:19.03.1
+    name: docker:19.03.2
     #entrypoint: [""]
   before_script:
     # DockerHub login
     - echo ${DOCKERHUB_REGISTRY_PSW} | docker login -u ${DOCKERHUB_REGISTRY_USER} --password-stdin  
   services:
-    - docker:19.03.1-dind    
+    - docker:19.03.2-dind    
