@@ -16,8 +16,8 @@ include:
 
 variables:
   # DockerHub
-  DOCKERHUB_REGISTRY_USER: <dockerhub_user>
-  DOCKERHUB_REGISTRY_PSW: <dockerhub_psw>
+  INCLUDE_DOCKERHUB_REGISTRY_USER: <dockerhub_user>
+  INCLUDE_DOCKERHUB_REGISTRY_PSW: <dockerhub_psw>
     
 stages:
   - . . .
