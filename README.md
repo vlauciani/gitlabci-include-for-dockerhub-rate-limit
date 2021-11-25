@@ -51,6 +51,4 @@ Here is a list of users who already contributed to this repository:
 - https://gitlab.com/imalik8088/gitlab-ci-include-test/-/blob/master/.gitlab-ci.yml
 
 ## Author
-(c) 2021 Valentino Lauciani valentino.lauciani[at]ingv.it
-
-Istituto Nazionale di Geofisica e Vulcanologia, Italia
+(c) 2021 Valentino Lauciani vlauciani[at]gmail.com
