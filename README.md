@@ -11,7 +11,12 @@ This snippet can be included in GitLab CI to che DockerHub rate limit.
 # .gitlab-ci.yml
 include:
   - remote: 'https://raw.githubusercontent.com/vlauciani/gitlabci-include-for-dockerhub-rate-limit/main/dockerhub-rate-limit.yml'
-  
+
+variables:
+  # DockerHub
+  DOCKERHUB_REGISTRY_USER: <dockerhub_user>
+  DOCKERHUB_REGISTRY_PSW: <dockerhub_psw>
+    
 stages:
   - . . .
   - dockerhub-rate-limit_stage
