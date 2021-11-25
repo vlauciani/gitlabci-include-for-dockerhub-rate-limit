@@ -1,4 +1,7 @@
 dockerhub-rate-limit:
+  image: 
+    name: alpine:3.15.0
+    #entrypoint: [""]
   script:
     - apk add --no-cache jq
     - TOKEN=$(curl --user "${DOCKERHUB_REGISTRY_USER}:${DOCKERHUB_REGISTRY_PSW}" "https://auth.docker.io/token?service=registry.docker.io&scope=repository:ratelimitpreview/test:pull" | jq -r .token)
