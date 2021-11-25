@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/vlauciani/gitlabci-include-for-dockerhub-rate-limit/blob/main/LICENSE)
 
-# DockerHub rate limit in `.gitlab-ci.yml`
+# DockerHub rate limit 'include', for `.gitlab-ci.yml`
 A simple yml file to use `include` directive in your `.gitlab-ci` to check the DockerHub rate limit
 
 ## Usage
