@@ -1,6 +1,9 @@
+before_script:
+  # DockerHub login
+  - echo ${DOCKERHUB_REGISTRY_PSW} | docker login -u ${DOCKERHUB_REGISTRY_USER} --password-stdin
+services:
+  - docker:19.03.1-dind
 dockerhub-rate-limit:
-  services:
-    - docker:19.03.1-dind
   image: 
     name: docker:19.03.1
     #entrypoint: [""]
