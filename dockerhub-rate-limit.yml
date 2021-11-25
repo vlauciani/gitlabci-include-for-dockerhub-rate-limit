@@ -1,6 +1,6 @@
 dockerhub-rate-limit:
   image: 
-    name: alpine:3.15.0
+    name: docker:19.03.1
     #entrypoint: [""]
   script:
     - apk add --no-cache jq
