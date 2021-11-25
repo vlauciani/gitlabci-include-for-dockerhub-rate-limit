@@ -11,6 +11,12 @@ In your `.gitlab-ci.yml` file, remeber to set
 
 Using GitLab CI/CD varaibles approach (https://gitlab.rm.ingv.it/help/ci/variables/index).
 
+This `stage` returns:
+```
+ratelimit-limit: 200;w=21600
+ratelimit-remaining: 176;w=21600
+```
+
 ### Example
 
 ```yml
