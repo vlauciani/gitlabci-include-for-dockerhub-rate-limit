@@ -3,18 +3,14 @@ dockerhub-rate-limit:
   variables:
     INCLUDE_DOCKERHUB_REGISTRY_USER: "default"
     INCLUDE_DOCKERHUB_REGISTRY_PSW: "default"    
-  #image: 
-  #  name: docker:19.03.1
-  #  #entrypoint: [""]
   script:
     # Install dependecies
     - apk update
-    #- apk upgrade   
     - apk add --no-cache curl jq
     - TOKEN=$(curl --user "${INCLUDE_DOCKERHUB_REGISTRY_USER}:${INCLUDE_DOCKERHUB_REGISTRY_PSW}" "https://auth.docker.io/token?service=registry.docker.io&scope=repository:ratelimitpreview/test:pull" | jq -r .token)
     - curl --head -H "Authorization:Bearer ${TOKEN}" https://registry-1.docker.io/v2/ratelimitpreview/test/manifests/latest 2>&1 | grep -i "RateLimit"
-  after_script:
-    - docker images    
+  #after_script:
+  #  - docker images    
 
 .dind:
   image: 
@@ -22,6 +18,6 @@ dockerhub-rate-limit:
     #entrypoint: [""]
   before_script:
     # DockerHub login
-    - echo ${DOCKERHUB_REGISTRY_PSW} | docker login -u ${DOCKERHUB_REGISTRY_USER} --password-stdin  
+    - echo ${INCLUDE_DOCKERHUB_REGISTRY_PSW} | docker login -u ${INCLUDE_DOCKERHUB_REGISTRY_USER} --password-stdin  
   services:
     - docker:19.03.2-dind    
