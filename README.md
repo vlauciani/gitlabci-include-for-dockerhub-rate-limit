@@ -1,5 +1,5 @@
-# `.gitlab-ci.yml` include for DockerHub rate limit
-A simple yml file to include in your `.gitlab-ci` to check the DockerHub rate limit
+# .gitlab-ci.yml `include` directive for DockerHub rate limit
+A simple yml file to use `include` directive in your `.gitlab-ci` to check the DockerHub rate limit
 
 ## Usage
 
