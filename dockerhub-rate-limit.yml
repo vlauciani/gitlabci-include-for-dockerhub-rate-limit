@@ -1,4 +1,6 @@
 dockerhub-rate-limit:
+  services:
+    - docker:19.03.1-dind
   image: 
     name: docker:19.03.1
     #entrypoint: [""]
