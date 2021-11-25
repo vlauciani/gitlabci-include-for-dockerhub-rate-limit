@@ -40,6 +40,10 @@ Here is a list of users who already contributed to this repository:
   <img src="https://contrib.rocks/image?repo=vlauciani/gitlabci-include-for-dockerhub-rate-limit" />
 </a>
 
+## References
+- https://medium.com/@imalik8088/tired-of-repeated-gitlab-ci-files-includes-to-the-rescue-17225532812a
+- https://gitlab.com/imalik8088/gitlab-ci-include-test/-/blob/master/.gitlab-ci.yml
+
 ## Author
 (c) 2021 Valentino Lauciani valentino.lauciani[at]ingv.it
 
