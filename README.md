@@ -7,9 +7,9 @@ A simple yml file to use `include` directive in your `.gitlab-ci` to check the D
 
 This snippet can be included in GitLab CI to check DockerHub rate limit.
 
-In your `.gitlab-ci.yml` file, remeber to set 
-- `INCLUDE_DOCKERHUB_REGISTRY_USER` 
-- `INCLUDE_DOCKERHUB_REGISTRY_PSW`
+In your `.gitlab-ci.yml` file, remeber to set variables:
+- `DOCKERHUB_REGISTRY_USER` 
+- `DOCKERHUB_REGISTRY_PSW`
 
 Using GitLab CI/CD varaibles approach (https://gitlab.rm.ingv.it/help/ci/variables/index).
 
@@ -28,8 +28,8 @@ include:
 
 variables:
   # DockerHub
-  INCLUDE_DOCKERHUB_REGISTRY_USER: <dockerhub_user>
-  INCLUDE_DOCKERHUB_REGISTRY_PSW: <dockerhub_psw>
+  DOCKERHUB_REGISTRY_USER: <dockerhub_user>
+  DOCKERHUB_REGISTRY_PSW: <dockerhub_psw>
     
 stages:
   - . . .
@@ -38,6 +38,9 @@ stages:
   
 dockerhub-rate-limit:
     stage: dockerhub-rate-limit_stage  
+    variables:
+      INCLUDE_DOCKERHUB_REGISTRY_USER: ${DOCKERHUB_REGISTRY_USER}
+      INCLUDE_DOCKERHUB_REGISTRY_PSW: ${DOCKERHUB_REGISTRY_PSW}    
 ```
 
 ## Contribute
