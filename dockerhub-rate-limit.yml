@@ -11,7 +11,7 @@ dockerhub-rate-limit:
   #after_script:
   #  - docker images    
 
-.dockerhub-rate-limit:
+.dind_dockerhub-rate-limit:
   image: 
     name: docker:19.03.2
     #entrypoint: [""]
