@@ -1,10 +1,9 @@
 api-oas-checker:
-  extends: .dind_api-oas-checker
+  extends: .dind
   variables:
     INCLUDE_DOCKERHUB_REGISTRY_USER: "default"
     INCLUDE_DOCKERHUB_REGISTRY_PSW: "default"    
   script:
-    # Install dependecies
     - apk update
     - apk add --no-cache curl jq
     - TOKEN=$(curl --user "${INCLUDE_DOCKERHUB_REGISTRY_USER}:${INCLUDE_DOCKERHUB_REGISTRY_PSW}" "https://auth.docker.io/token?service=registry.docker.io&scope=repository:ratelimitpreview/test:pull" | jq -r .token)
@@ -12,7 +11,7 @@ api-oas-checker:
   #after_script:
   #  - docker images    
 
-.dind_api-oas-checker:
+.dind:
   image: 
     name: docker:19.03.2
     #entrypoint: [""]
