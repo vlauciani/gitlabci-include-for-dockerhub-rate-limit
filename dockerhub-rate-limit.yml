@@ -1,5 +1,5 @@
 dockerhub-rate-limit:
-  extends: .dind_dockerhub-rate-limit2
+  extends: .dind_dockerhub-rate-limit
   variables:
     INCLUDE_DOCKERHUB_REGISTRY_USER: "default"
     INCLUDE_DOCKERHUB_REGISTRY_PSW: "default"    
@@ -11,7 +11,7 @@ dockerhub-rate-limit:
   #after_script:
   #  - docker images    
 
-.dind_dockerhub-rate-limit2:
+.dind_dockerhub-rate-limit:
   image: 
     name: docker:19.03.2
     #entrypoint: [""]
