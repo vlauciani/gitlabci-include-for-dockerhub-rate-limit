@@ -1,5 +1,5 @@
 api-oas-checker:
-  extends: .dind
+  extends: .dind_api-oas-checker
   variables:
     INCLUDE_DOCKERHUB_REGISTRY_USER: "default"
     INCLUDE_DOCKERHUB_REGISTRY_PSW: "default"    
@@ -11,7 +11,7 @@ api-oas-checker:
   #after_script:
   #  - docker images    
 
-.dind:
+.dind_api-oas-checker:
   image: 
     name: docker:19.03.2
     #entrypoint: [""]
