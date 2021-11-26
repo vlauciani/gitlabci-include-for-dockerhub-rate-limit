@@ -1,5 +1,5 @@
-dockerhub-rate-limit:
-  extends: .dind
+api-oas-checker:
+  extends: .dind_api-oas-checker
   variables:
     INCLUDE_DOCKERHUB_REGISTRY_USER: "default"
     INCLUDE_DOCKERHUB_REGISTRY_PSW: "default"    
@@ -12,12 +12,11 @@ dockerhub-rate-limit:
   #after_script:
   #  - docker images    
 
-.dind:
+.dind_api-oas-checker:
   image: 
     name: docker:19.03.2
     #entrypoint: [""]
   before_script:
-    # DockerHub login
     - echo ${INCLUDE_DOCKERHUB_REGISTRY_PSW} | docker login -u ${INCLUDE_DOCKERHUB_REGISTRY_USER} --password-stdin  
   services:
     - docker:19.03.2-dind    
