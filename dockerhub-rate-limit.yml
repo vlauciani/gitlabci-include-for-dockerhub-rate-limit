@@ -7,10 +7,11 @@ dockerhub-rate-limit:
     - apk update
     - apk add --no-cache curl jq
     - TOKEN=$(curl --user "${INCLUDE_DOCKERHUB_REGISTRY_USER}:${INCLUDE_DOCKERHUB_REGISTRY_PSW}" "https://auth.docker.io/token?service=registry.docker.io&scope=repository:ratelimitpreview/test:pull" | jq -r .token)
-    - curl --head -H "Authorization:Bearer ${TOKEN}" https://registry-1.docker.io/v2/ratelimitpreview/test/manifests/latest 2>&1 | grep -i "RateLimit"
-    - RATELIMIT_REMAINING=$( curl --head -H "Authorization:Bearer ${TOKEN}" https://registry-1.docker.io/v2/ratelimitpreview/test/manifests/latest 2>&1 | grep -i "ratelimit-remaining" | awk -F":" '{print $2}' | awk -F";" '{print $1}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
-    - echo RATELIMIT_REMAINING=${RATELIMIT_REMAINING}
-    - if [ "${RATELIMIT_REMAINING}" -eq 0 ]; then exit 1; fi
+    - RESPONSE=$(curl --head -H "Authorization:Bearer ${TOKEN}" https://registry-1.docker.io/v2/ratelimitpreview/test/manifests/latest 2>&1)
+    - echo "${RESPONSE}" | grep -i "RateLimit" || echo "Rate limit headers not present (likely paid account)"
+    - RATELIMIT_REMAINING=$(echo "${RESPONSE}" | grep -i "ratelimit-remaining" | awk -F":" '{print $2}' | awk -F";" '{print $1}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+    - if [ -n "${RATELIMIT_REMAINING}" ]; then echo "RATELIMIT_REMAINING=${RATELIMIT_REMAINING}"; else echo "RATELIMIT_REMAINING=not available (likely paid account)"; fi
+    - if [ -n "${RATELIMIT_REMAINING}" ] && [ "${RATELIMIT_REMAINING}" -eq 0 ]; then exit 1; fi
   #after_script:
   #  - docker images    
 
