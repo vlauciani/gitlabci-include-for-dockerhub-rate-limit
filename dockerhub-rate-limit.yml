@@ -9,8 +9,10 @@ dockerhub-rate-limit:
     - echo "Get token:"
     - |
       if [ "${INCLUDE_DOCKERHUB_REGISTRY_USER}" -eq "default" ] && [ "${INCLUDE_DOCKERHUB_REGISTRY_PSW}" -eq "default" ]; then
+         echo "AAAAA"
          TOKEN=$(curl "https://auth.docker.io/token?service=registry.docker.io&scope=repository:ratelimitpreview/test:pull" | jq -r .token)
       else
+         echo "BBBBB"
          TOKEN=$(curl --user "${INCLUDE_DOCKERHUB_REGISTRY_USER}:${INCLUDE_DOCKERHUB_REGISTRY_PSW}" "https://auth.docker.io/token?service=registry.docker.io&scope=repository:ratelimitpreview/test:pull" | jq -r .token)
       fi
     - echo "Get response:" 
