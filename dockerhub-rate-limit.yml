@@ -6,6 +6,7 @@ dockerhub-rate-limit:
   script:
     - apk update
     - apk add --no-cache curl jq
+    - echo "Get token"
     - TOKEN=$(curl --user "${INCLUDE_DOCKERHUB_REGISTRY_USER}:${INCLUDE_DOCKERHUB_REGISTRY_PSW}" "https://auth.docker.io/token?service=registry.docker.io&scope=repository:ratelimitpreview/test:pull" | jq -r .token)
     - RESPONSE=$(curl --head -H "Authorization:Bearer ${TOKEN}" https://registry-1.docker.io/v2/ratelimitpreview/test/manifests/latest 2>&1)
     - echo "${RESPONSE}" | grep -i "RateLimit" || echo "Rate limit headers not present (likely paid account)"
