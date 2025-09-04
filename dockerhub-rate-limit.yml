@@ -20,7 +20,7 @@ dockerhub-rate-limit:
     - echo "Get RATELIMIT_REMAINING:"
     - RATELIMIT_REMAINING=$(echo "${RESPONSE}" | grep -i "ratelimit-remaining")
     - if [ -n "${RATELIMIT_REMAINING}" ]; then echo "RATELIMIT_REMAINING=${RATELIMIT_REMAINING}"; RATELIMIT_REMAINING_N=$(echo ${RATELIMIT_REMAINING} | awk -F":" '{print $2}' | awk -F";" '{print $1}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'); echo " RATELIMIT_REMAINING_N=${RATELIMIT_REMAINING_N}"; else echo "RATELIMIT_REMAINING=not available (likely paid account)"; fi
-    echo "Done"
+    - echo "Done"
 
     - if [ -n "${RATELIMIT_REMAINING}" ] && [ "${RATELIMIT_REMAINING_N}" -eq 0 ]; then exit 1; fi
   #after_script:
