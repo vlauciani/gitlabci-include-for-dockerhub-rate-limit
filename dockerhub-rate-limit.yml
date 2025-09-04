@@ -14,7 +14,7 @@ dockerhub-rate-limit:
     #- echo "${RESPONSE}" | grep "ratelimit-limit" || echo "Rate limit headers not present (likely paid account)"
     #- RATELIMIT_REMAINING=$(echo "${RESPONSE}" | grep -i "ratelimit-remaining" | awk -F":" '{print $2}' | awk -F";" '{print $1}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
     - RATELIMIT_REMAINING=$(echo "${RESPONSE}" | grep -i "ratelimit-remaining")
-    - if [ -n "${RATELIMIT_REMAINING}" ]; then echo "RATELIMIT_REMAINING=${RATELIMIT_REMAINING}"; RATELIMIT_REMAINING_N=$(echo ${RATELIMIT_REMAINING} | awk -F":" '{print $2}' | awk -F";" '{print $1}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'); else echo "RATELIMIT_REMAINING=not available (likely paid account)"; fi
+    - if [ -n "${RATELIMIT_REMAINING}" ]; then echo "RATELIMIT_REMAINING=${RATELIMIT_REMAINING}"; RATELIMIT_REMAINING_N=$(echo ${RATELIMIT_REMAINING} | awk -F":" '{print $2}' | awk -F";" '{print $1}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'); echo " RATELIMIT_REMAINING_N=${RATELIMIT_REMAINING_N}"; else echo "RATELIMIT_REMAINING=not available (likely paid account)"; fi
     - if [ -n "${RATELIMIT_REMAINING}" ] && [ "${RATELIMIT_REMAINING}" -eq 0 ]; then exit 1; fi
   #after_script:
   #  - docker images    
